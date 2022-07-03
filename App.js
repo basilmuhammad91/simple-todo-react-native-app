@@ -1,12 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+
+// import root header
+import TodoHeader from './src/components/TodoHeader';
+
+// import todo list
+import TodoList from './src/components/TodoList';
+import store from './src/redux/store';
 
 export default function App() {
+
+  const RootApp = () => {
+    return (
+      <View>
+        <TodoHeader />
+        <TodoList />
+      </View>
+    );
+  };
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <RootApp />
+    </Provider>
+
+    // <View>
+    //   <RootApp />
+    // </View>
   );
 }
 
